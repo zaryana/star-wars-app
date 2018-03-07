@@ -16,3 +16,10 @@ export interface Character {
   url: string;
   vehicles: any[];
 }
+
+export interface SWApiResponse<T> {
+  count: number;
+  next: string;
+  previous: string;
+  results: T[];
+}

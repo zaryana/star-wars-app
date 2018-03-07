@@ -1,8 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {catchError, map} from 'rxjs/operators';
-import {Character} from './character.model';
+
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/publishReplay';
+import {Character, SWApiResponse} from './character.model';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -12,8 +17,10 @@ const httpOptions = {
 export class CharacterService {
 
   private charactersUrl = 'https://swapi.co/api/people';
+  private cachedChars: Observable<Character[]>;
 
   constructor(private httpClient: HttpClient) {
+    this.cachedChars = this.getCharactersPage(this.charactersUrl).publishReplay(1).refCount();
   }
 
   /**
@@ -21,11 +28,18 @@ export class CharacterService {
    * @returns {Observable<Character[]>}
    */
   public getCharacters(): Observable<Character[]> {
-    return this.httpClient.get(this.charactersUrl).pipe(
-      map(
-        (res: any) => <Character[]>res.results),
-      catchError(this.handleError)
-    );
+    return this.cachedChars;
+  }
+
+  private getCharactersPage(url: string): Observable<Character[]> {
+    return this.httpClient.get<SWApiResponse<Character>>(url)
+      .concatMap(data => {
+        if (data.next) {
+          return this.getCharactersPage(data.next).map(resultsToJoin => [...data.results, ...resultsToJoin]);
+        } else {
+          return Observable.of(data.results);
+        }
+      }).catch(this.handleError);
   }
 
   /**

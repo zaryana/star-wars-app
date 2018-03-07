@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
@@ -18,7 +19,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     CommonModule
   ],
   exports: [
-    MatToolbarModule, MatSidenavModule, MatListModule, MatIconModule, MatMenuModule, MatButtonModule, MatInputModule, MatSelectModule,
+    MatToolbarModule, MatSidenavModule, MatProgressBarModule, MatListModule, MatIconModule, MatMenuModule, MatButtonModule, MatInputModule, MatSelectModule,
     MatCardModule, MatFormFieldModule, BrowserAnimationsModule
   ],
   declarations: []
