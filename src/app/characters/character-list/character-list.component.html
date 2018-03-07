@@ -34,7 +34,8 @@
       <mat-list-item
         *ngFor="let character of (characters | async | films: film.value |species: species.value | birthYear: minYear.value:maxYear.value)"
         role="listitem">
-        {{character.name}}
+        <mat-icon mat-list-icon>face</mat-icon>
+        <h4 mat-line>{{character.name}}</h4>
       </mat-list-item>
     </mat-list>
   </mat-card>
