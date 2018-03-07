@@ -1,7 +1,12 @@
 # Star Wars Character Browser
-Are you a Star Wars fan or curious about the Star Wars world? This is the right place for you to land. This application lets you navigate through all the characters in nice and easy way. 
 
-# Running and contributing
+Are you a Star Wars fan or curious about the Star Wars world? This is the right place for you to land. This application lets you navigate through all the characters in nice and easy way. 
+![Star Wars Browser](https://user-images.githubusercontent.com/2076328/37110831-5464fc3c-223e-11e8-9928-c674a4c56bdf.png)
+
+# Contribution and Development
+
+The application relies on the [SWAPI](https://swapi.co/) REST service to fetch the data. Please note, there has the rate limits per source IP.
+Feel free to contribute by submitting the pull request or issue, participating in the discussions, etc.
 
 ## Development server
 

@@ -5,15 +5,20 @@ import {CharacterService} from './shared/character.service';
 import {HttpClientModule} from '@angular/common/http';
 import {CharactersRoutingModule} from './characters-routing.module';
 import {StarMaterialModule} from '../star-material/star-material.module';
+import { CharacterSearchComponent } from './character-search/character-search.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { FilmsPipe } from './shared/films.pipe';
+import { SpeciesPipe } from './shared/species.pipe';
+import { BirthYearPipe } from './shared/birth-year.pipe';
 
 @NgModule({
   imports: [
-    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule
+    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule, ReactiveFormsModule
   ],
   exports: [
-    CharacterListComponent
+    CharacterListComponent, CharacterSearchComponent
   ],
   providers: [CharacterService],
-  declarations: [CharacterListComponent]
+  declarations: [CharacterListComponent, CharacterSearchComponent, FilmsPipe, SpeciesPipe, BirthYearPipe]
 })
 export class CharactersModule { }

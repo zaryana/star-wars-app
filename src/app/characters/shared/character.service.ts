@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/publishReplay';
 import {Character, SWApiResponse} from './character.model';
+import {Film} from './film.model';
+import {Species} from './species.model';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,10 +19,17 @@ const httpOptions = {
 export class CharacterService {
 
   private charactersUrl = 'https://swapi.co/api/people';
-  private cachedChars: Observable<Character[]>;
+  private filmsUrl = 'https://swapi.co/api/films';
+  private speciesUrl = 'https://swapi.co/api/species';
+
+  private characters: Observable<Character[]>;
+  private films: Observable<Film[]>;
+  private species: Observable<Species[]>;
 
   constructor(private httpClient: HttpClient) {
-    this.cachedChars = this.getCharactersPage(this.charactersUrl).publishReplay(1).refCount();
+    this.characters = this.getDomainObjects(this.charactersUrl);
+    this.films = this.getDomainObjects(this.filmsUrl);
+    this.species = this.getDomainObjects(this.speciesUrl);
   }
 
   /**
@@ -28,19 +37,50 @@ export class CharacterService {
    * @returns {Observable<Character[]>}
    */
   public getCharacters(): Observable<Character[]> {
-    return this.cachedChars;
+    return this.characters;
   }
 
-  private getCharactersPage(url: string): Observable<Character[]> {
-    return this.httpClient.get<SWApiResponse<Character>>(url)
-      .concatMap(data => {
-        if (data.next) {
-          return this.getCharactersPage(data.next).map(resultsToJoin => [...data.results, ...resultsToJoin]);
+  /**
+   * gets films
+   * @returns {Observable<Film[]>}
+   */
+  public getFilms(): Observable<Film[]> {
+    return this.films;
+  }
+
+  /**
+   * gets species
+   * @returns {Observable<Species[]>}
+   */
+  public getSpecies(): Observable<Species[]> {
+    return this.species;
+  }
+
+  /**
+   * caching
+   * @param {string} url
+   * @returns {Observable<T[]>}
+   */
+  private getDomainObjects<T>(url: string): Observable<T[]> {
+    return this.getApiPage<T>(url).publishReplay(1).refCount();
+  }
+
+  /**
+   * gets all pages
+   * @param {string} url
+   * @returns {Observable<T[]>}
+   */
+  private getApiPage<T>(url: string): Observable<T[]> {
+    return this.httpClient.get<SWApiResponse<T>>(url)
+      .concatMap(pageResponse => {
+        if (pageResponse.next) {
+          return this.getApiPage(pageResponse.next).map(resultsToJoin => [...pageResponse.results, ...resultsToJoin]);
         } else {
-          return Observable.of(data.results);
+          return Observable.of(pageResponse.results);
         }
       }).catch(this.handleError);
   }
+
 
   /**
    * Handles error messages

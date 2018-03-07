@@ -7,6 +7,7 @@ import {StarMaterialModule} from './star-material/star-material.module';
 import {CharactersModule} from './characters/characters.module';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { FilmsPipe } from './characters/shared/films.pipe';
 
 @NgModule({
   declarations: [

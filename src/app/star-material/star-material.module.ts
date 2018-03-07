@@ -14,6 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {LayoutModule} from '@angular/cdk/layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSliderModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   ],
   exports: [
     MatToolbarModule, MatSidenavModule, MatProgressBarModule, MatListModule, MatIconModule, MatMenuModule, MatButtonModule, MatInputModule,
-    MatSelectModule, MatCardModule, MatFormFieldModule, LayoutModule, BrowserAnimationsModule
+    MatSelectModule, MatCardModule, MatFormFieldModule, MatSliderModule, LayoutModule, BrowserAnimationsModule
   ],
   declarations: []
 })

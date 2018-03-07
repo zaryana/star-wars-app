@@ -1,11 +1,41 @@
 <mat-progress-bar *ngIf="!(characters | async)" mode="indeterminate"></mat-progress-bar>
 <div class="sw-characters-list">
-  <mat-toolbar>
+  <mat-card class="sw-card">
     <span>Characters</span>
-  </mat-toolbar>
-  <mat-card>
+    <form [formGroup]="filterForm">
+
+      <mat-form-field>
+        <mat-select placeholder="Films" [formControl]="film" multiple>
+          <mat-option *ngFor="let f of films | async" [value]="f">{{f.title}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Species" [formControl]="species" multiple>
+          <mat-option *ngFor="let s of allSpecies | async" [value]="s">{{s.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="number" placeholder="Birth year from" [formControl]="minYear">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="number" placeholder="Birth year to" [formControl]="maxYear">
+      </mat-form-field>
+
+      <mat-error *ngIf="filterForm.errors?.minLessThanMax">
+        Should be larger than Birth year from
+      </mat-error>
+    </form>
+  </mat-card>
+  <mat-card class="sw-card">
     <mat-list role="list">
-      <mat-list-item *ngFor="let character of characters | async" role="listitem">{{character.name}}</mat-list-item>
+      <mat-list-item
+        *ngFor="let character of (characters | async | films: film.value |species: species.value | birthYear: minYear.value:maxYear.value)"
+        role="listitem">
+        {{character.name}}
+      </mat-list-item>
     </mat-list>
   </mat-card>
 </div>
