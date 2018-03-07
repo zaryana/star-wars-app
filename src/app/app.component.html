@@ -1,6 +1,9 @@
-<sw-toolbar></sw-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav-content>
-    <sw-character-list></sw-character-list>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="sw-container" [class.sw-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="sw-toolbar">Star Wars Browser</mat-toolbar>
+  <mat-sidenav-container class="sw-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav-content>
+      <sw-character-list></sw-character-list>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

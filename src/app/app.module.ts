@@ -6,13 +6,14 @@ import {CoreModule} from './core/core.module';
 import {StarMaterialModule} from './star-material/star-material.module';
 import {CharactersModule} from './characters/characters.module';
 import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, CoreModule, StarMaterialModule, CharactersModule, RouterModule
+    BrowserModule, CoreModule, StarMaterialModule, CharactersModule, RouterModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

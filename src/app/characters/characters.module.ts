@@ -8,7 +8,7 @@ import {StarMaterialModule} from '../star-material/star-material.module';
 
 @NgModule({
   imports: [
-    CommonModule, HttpClientModule, CharactersRoutingModule, StarMaterialModule
+    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule
   ],
   exports: [
     CharacterListComponent

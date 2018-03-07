@@ -1,4 +1,12 @@
 <mat-progress-bar *ngIf="!(characters | async)" mode="indeterminate"></mat-progress-bar>
-<mat-list role="list" *ngFor="let character of characters | async">
-  <mat-list-item role="listitem">{{character.name}}</mat-list-item>
-</mat-list>
+<div class="sw-characters-list">
+  <mat-toolbar>
+    <span>Characters</span>
+  </mat-toolbar>
+  <mat-card>
+    <mat-list role="list">
+      <mat-list-item *ngFor="let character of characters | async" role="listitem">{{character.name}}</mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
+
