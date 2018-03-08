@@ -1,7 +1,8 @@
 # Star Wars Character Browser
 
 Are you a Star Wars fan or curious about the Star Wars world? This is the right place for you to land. This application lets you navigate through all the characters in nice and easy way. 
-![Star Wars Browser](https://user-images.githubusercontent.com/1624855/37118367-4bcf96e8-2254-11e8-99b3-98a227ebe1a2.png)
+![Star Wars Browser](https://user-images.githubusercontent.com/2076328/37127192-f71123da-2274-11e8-9202-6628a76feae9.png)
+![Star Wars Browser](https://user-images.githubusercontent.com/2076328/37127196-f989f38a-2274-11e8-9367-099b28fb46de.png)
 
 # Contribution and Development
 

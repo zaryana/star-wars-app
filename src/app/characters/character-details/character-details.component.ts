@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {CharacterService} from '../shared/character.service';
 import {Character} from '../shared/character.model';
 import {Starships} from '../shared/starships.model';
@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/Observable';
 import {filter, map, switchMap} from 'rxjs/operators';
 import {Species} from '../shared/species.model';
 import {Film} from '../shared/film.model';
+import {NotifyService} from '../shared/notify.service';
 
 @Component({
   selector: 'sw-character-details',
@@ -21,7 +22,7 @@ export class CharacterDetailsComponent implements OnInit {
   startships: Observable<Starships[]>;
   films: Observable<Film[]>;
 
-  constructor(private route: ActivatedRoute, private characterService: CharacterService) {
+  constructor(private route: ActivatedRoute, private characterService: CharacterService, private notifyService: NotifyService, private router: Router) {
   }
 
   ngOnInit() {
@@ -30,13 +31,24 @@ export class CharacterDetailsComponent implements OnInit {
         this.characterId = +params.get('id');
         if (this.characterId) {
           this.characterService.getCharacter(this.characterId).subscribe(character => {
-              this.character = character;
-              this.fetchDetails();
+              if (character == null) {
+                this.noCharacterFound();
+              } else {
+                this.character = character;
+                this.fetchDetails();
+              }
             },
-            error => console.error(error));
+            error => {
+              this.notifyService.warning(error);
+            });
         }
       }
     );
+  }
+
+  private noCharacterFound() {
+    this.notifyService.warning('Oops, incorrect character link');
+    this.router.navigate(['']);
   }
 
   private fetchDetails() {

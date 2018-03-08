@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CharacterListComponent } from './character-list/character-list.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CharacterListComponent} from './character-list/character-list.component';
 import {CharacterService} from './shared/character.service';
 import {HttpClientModule} from '@angular/common/http';
 import {CharactersRoutingModule} from './characters-routing.module';
 import {StarMaterialModule} from '../star-material/star-material.module';
-import { CharacterSearchComponent } from './character-search/character-search.component';
+import {CharacterSearchComponent} from './character-search/character-search.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { FilmsPipe } from './shared/films.pipe';
-import { SpeciesPipe } from './shared/species.pipe';
-import { BirthYearPipe } from './shared/birth-year.pipe';
-import { CharacterDetailsComponent } from './character-details/character-details.component';
+import {FilmsPipe} from './shared/films.pipe';
+import {SpeciesPipe} from './shared/species.pipe';
+import {BirthYearPipe} from './shared/birth-year.pipe';
+import {CharacterDetailsComponent} from './character-details/character-details.component';
+import {NotifyService} from './shared/notify.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { CharacterDetailsComponent } from './character-details/character-details
   exports: [
     CharacterListComponent, CharacterSearchComponent
   ],
-  providers: [CharacterService],
+  providers: [CharacterService, NotifyService],
   declarations: [CharacterListComponent, CharacterSearchComponent, FilmsPipe, SpeciesPipe, BirthYearPipe, CharacterDetailsComponent]
 })
-export class CharactersModule { }
+export class CharactersModule {
+}
