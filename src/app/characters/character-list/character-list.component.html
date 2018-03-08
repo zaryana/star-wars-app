@@ -29,14 +29,14 @@
       </mat-error>
     </form>
   </mat-card>
-  <mat-card class="sw-card">
+  <mat-card class="sw-card" *ngIf="(characters | async)">
     <mat-list role="list">
-      <mat-list-item
+      <a mat-list-item class="mat-list-option"
         *ngFor="let character of (characters | async | films: film.value |species: species.value | birthYear: minYear.value:maxYear.value)"
-        role="listitem">
+        role="listitem" (click)="goTo(character)">
         <mat-icon mat-list-icon>face</mat-icon>
         <h4 mat-line>{{character.name}}</h4>
-      </mat-list-item>
+      </a>
     </mat-list>
   </mat-card>
 </div>

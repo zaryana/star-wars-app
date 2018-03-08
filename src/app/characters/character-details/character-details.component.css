@@ -1,0 +1,12 @@
+.sw-characters-details {
+  max-width: 920px;
+  margin: auto;
+}
+
+.sw-card {
+  margin: 10px 0px 0px 0px;
+}
+
+.sw-card > h1 > a {
+  vertical-align: text-top;
+}

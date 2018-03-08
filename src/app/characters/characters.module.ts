@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { FilmsPipe } from './shared/films.pipe';
 import { SpeciesPipe } from './shared/species.pipe';
 import { BirthYearPipe } from './shared/birth-year.pipe';
+import { CharacterDetailsComponent } from './character-details/character-details.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { BirthYearPipe } from './shared/birth-year.pipe';
     CharacterListComponent, CharacterSearchComponent
   ],
   providers: [CharacterService],
-  declarations: [CharacterListComponent, CharacterSearchComponent, FilmsPipe, SpeciesPipe, BirthYearPipe]
+  declarations: [CharacterListComponent, CharacterSearchComponent, FilmsPipe, SpeciesPipe, BirthYearPipe, CharacterDetailsComponent]
 })
 export class CharactersModule { }

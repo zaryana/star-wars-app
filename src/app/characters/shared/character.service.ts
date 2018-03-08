@@ -10,6 +10,7 @@ import 'rxjs/add/operator/publishReplay';
 import {Character, SWApiResponse} from './character.model';
 import {Film} from './film.model';
 import {Species} from './species.model';
+import {Starships} from './starships.model';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -21,15 +22,18 @@ export class CharacterService {
   private charactersUrl = 'https://swapi.co/api/people';
   private filmsUrl = 'https://swapi.co/api/films';
   private speciesUrl = 'https://swapi.co/api/species';
+  private starshipsUrl = 'https://swapi.co/api/starships';
 
   private characters: Observable<Character[]>;
   private films: Observable<Film[]>;
   private species: Observable<Species[]>;
+  public starships: Observable<Starships[]>;
 
   constructor(private httpClient: HttpClient) {
     this.characters = this.getDomainObjects(this.charactersUrl);
     this.films = this.getDomainObjects(this.filmsUrl);
     this.species = this.getDomainObjects(this.speciesUrl);
+    this.starships = this.getDomainObjects(this.starshipsUrl);
   }
 
   /**
@@ -38,6 +42,46 @@ export class CharacterService {
    */
   public getCharacters(): Observable<Character[]> {
     return this.characters;
+  }
+
+  public getCharacter(id: number): Observable<Character> {
+    return this.characters.map((characters: Character[]) => {
+      return characters.find((character: Character) => {
+        const url = character.url.split('/');
+        const currId = Number(url[url.length - 2]);
+        return currId === id;
+      });
+    });
+  }
+
+  /**
+   * gets species
+   * @returns {Observable<Species[]>}
+   */
+  public getSpeciesOfCharacter(character: Character): Observable<Species[]> {
+    return this.species.map((species: Species[]) => species.filter(
+      (s: Species) => {
+        return character.species.indexOf(s.url) > -1;
+      }
+    ));
+  }
+
+
+  public getMoviesOfCharacter(character: Character): Observable<Film[]> {
+    return this.films.map((films: Film[]) => films.filter(
+      (f: Film) => {
+        return character.films.indexOf(f.url) > -1;
+      }
+    ));
+  }
+
+
+  public getShipsOfCharacter(character: Character): Observable<Starships[]> {
+    return this.starships.map((ships: Starships[]) => ships.filter(
+      (s: Starships) => {
+        return character.starships.indexOf(s.url) > -1;
+      }
+    ));
   }
 
   /**
@@ -54,6 +98,14 @@ export class CharacterService {
    */
   public getSpecies(): Observable<Species[]> {
     return this.species;
+  }
+
+  /**
+   * gets starships
+   * @returns {Observable<Starships[]>}
+   */
+  public getStarships(): Observable<Starships[]> {
+    return this.starships;
   }
 
   /**

@@ -1,0 +1,117 @@
+<mat-progress-bar *ngIf="!character" mode="indeterminate"></mat-progress-bar>
+<div class="sw-characters-details">
+  <mat-card class="mat-typography sw-card" *ngIf="character">
+    <h1 class="mat-display-1">
+      <a mat-icon-button [routerLink]="['']">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+      {{character?.name}}
+    </h1>
+    <h2>Species</h2>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let sp of species|async">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>{{sp.name}}</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <strong>Classification: </strong>
+        {{sp.classification}}
+        <br/>
+        <strong>Designation: </strong>
+        {{sp.designation}}
+        <br/>
+        <strong>Average height: </strong>
+        {{sp.average_height}}
+        <br/>
+        <strong>Average lifespan: </strong>
+        {{sp.average_lifespan}}
+        <br/>
+        <strong>Skin colors: </strong>
+        {{sp.skin_colors}}
+        <br/>
+        <strong>Eye colors: </strong>
+        {{sp.eye_colors}}
+        <br/>
+        <strong>Language: </strong>
+        {{sp.language}}
+        <br/>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <h2>Movies</h2>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let film of films|async">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>{{film.title}}</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <strong>Episode: </strong>
+        {{film.episode_id}}
+        <br/>
+        <strong>Opening crawl: </strong>
+        {{film.opening_crawl}}
+        <br/>
+        <strong>Director: </strong>
+        {{film.director}}
+        <br/>
+        <strong>Producer: </strong>
+        {{film.producer}}
+        <br/>
+        <strong>Release date: </strong>
+        {{film.release_date}}
+        <br/>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <h2>Spaceships</h2>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let ship of startships|async">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>{{ship.name}}</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <strong>Model: </strong>
+        {{ship.model}}
+        <br/>
+        <strong>Manufacturer: </strong>
+        {{ship.manufacturer}}
+        <br/>
+        <strong>Cost: </strong>
+        {{ship.cost_in_credits}}
+        <br/>
+        <strong>Length: </strong>
+        {{ship.length}}
+        <br/>
+        <strong>Max atmosphering speed: </strong>
+        {{ship.max_atmosphering_speed}}
+        <br/>
+        <strong>Crew: </strong>
+        {{ship.crew}}
+        <br/>
+        <strong>Passengers: </strong>
+        {{ship.passengers}}
+        <br/>
+        <strong>Model: </strong>
+        {{ship.model}}
+        <br/>
+        <strong>Cargo capacity: </strong>
+        {{ship.cargo_capacity}}
+        <br/>
+        <strong>Consumables: </strong>
+        {{ship.consumables}}
+        <br/>
+        <strong>Hyperdrive rating: </strong>
+        {{ship.hyperdrive_rating}}
+        <br/>
+        <strong>MGLT: </strong>
+        {{ship.MGLT}}
+        <br/>
+        <strong>Starship class: </strong>
+        {{ship.starship_class}}
+        <br/>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-card>
+</div>

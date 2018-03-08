@@ -7,14 +7,14 @@ import {StarMaterialModule} from './star-material/star-material.module';
 import {CharactersModule} from './characters/characters.module';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import { FilmsPipe } from './characters/shared/films.pipe';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, CoreModule, StarMaterialModule, CharactersModule, RouterModule, HttpClientModule
+    BrowserModule, CoreModule, StarMaterialModule, CharactersModule, RouterModule, HttpClientModule, AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
