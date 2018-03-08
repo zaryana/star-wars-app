@@ -20,10 +20,10 @@ const httpOptions = {
 @Injectable()
 export class CharacterService {
 
-  private charactersUrl = 'https://swapi.co/api/people';
-  private filmsUrl = 'https://swapi.co/api/films';
-  private speciesUrl = 'https://swapi.co/api/species';
-  private starshipsUrl = 'https://swapi.co/api/starships';
+  private charactersUrl = 'https://swapi.co/api/people/';
+  private filmsUrl = 'https://swapi.co/api/films/';
+  private speciesUrl = 'https://swapi.co/api/species/';
+  private starshipsUrl = 'https://swapi.co/api/starships/';
 
   private characters: Observable<Character[]>;
   private films: Observable<Film[]>;
@@ -141,7 +141,7 @@ export class CharacterService {
    * @returns {Observable<T[]>}
    */
   private getApiPage<T>(url: string): Observable<T[]> {
-    return this.httpClient.get<SWApiResponse<T>>(url)
+    return this.httpClient.get<SWApiResponse<T>>(url, httpOptions)
       .concatMap(pageResponse => {
         if (pageResponse.next) {
           return this.getApiPage(pageResponse.next).map(resultsToJoin => [...pageResponse.results, ...resultsToJoin]);
