@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CharacterService} from '../shared/character.service';
 import {Character} from '../shared/character.model';
 import {Starships} from '../shared/starships.model';
 import {Observable} from 'rxjs/Observable';
-import {filter, map, switchMap} from 'rxjs/operators';
 import {Species} from '../shared/species.model';
 import {Film} from '../shared/film.model';
 import {NotifyService} from '../shared/notify.service';

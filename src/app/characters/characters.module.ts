@@ -18,7 +18,7 @@ import {NotifyService} from './shared/notify.service';
     CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule, ReactiveFormsModule
   ],
   exports: [
-    CharacterListComponent, CharacterSearchComponent
+    CharacterListComponent, CharacterSearchComponent, CharacterDetailsComponent
   ],
   providers: [CharacterService, NotifyService],
   declarations: [CharacterListComponent, CharacterSearchComponent, FilmsPipe, SpeciesPipe, BirthYearPipe, CharacterDetailsComponent]

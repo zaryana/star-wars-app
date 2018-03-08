@@ -1,9 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CharacterListComponent } from './character-list.component';
+import {CharacterListComponent} from './character-list.component';
 import {StarMaterialModule} from '../../star-material/star-material.module';
 import {CharacterService} from '../shared/character.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {BirthYearPipe} from '../shared/birth-year.pipe';
+import {FilmsPipe} from '../shared/films.pipe';
+import {SpeciesPipe} from '../shared/species.pipe';
+import {NotifyService} from '../shared/notify.service';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('CharacterListComponent', () => {
   let component: CharacterListComponent;
@@ -11,9 +17,9 @@ describe('CharacterListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [StarMaterialModule, HttpClientModule],
-      declarations: [ CharacterListComponent ],
-      providers: [ CharacterService ]
+      imports: [StarMaterialModule, HttpClientModule, RouterTestingModule, ReactiveFormsModule],
+      declarations: [ CharacterListComponent, BirthYearPipe, FilmsPipe, SpeciesPipe ],
+      providers: [ CharacterService, NotifyService ]
     })
     .compileComponents();
   }));

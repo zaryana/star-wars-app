@@ -1,15 +1,16 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {async, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {CharactersModule} from './characters/characters.module';
 import {StarMaterialModule} from './star-material/star-material.module';
+import {RouterModule} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CoreModule, CharactersModule, StarMaterialModule],
-      declarations: [
-        AppComponent
-      ],
+      imports: [CoreModule, CharactersModule, StarMaterialModule, RouterTestingModule],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
   it('should create the app', async(() => {

@@ -4,6 +4,8 @@ import {CharacterService} from './character.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {Character} from './character.model';
 import {SWAPI_1PAGE_MOCK, SWAPI_2PAGES_MOCK1, SWAPI_2PAGES_MOCK2} from './characters.mock';
+import {NotifyService} from './notify.service';
+import {StarMaterialModule} from '../../star-material/star-material.module';
 
 describe('Character Service', () => {
 
@@ -13,8 +15,8 @@ describe('Character Service', () => {
   beforeEach(() => {
 
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [CharacterService]
+      imports: [HttpClientTestingModule, StarMaterialModule],
+      providers: [CharacterService, NotifyService]
     });
 
     characterService = TestBed.get(CharacterService);
