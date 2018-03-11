@@ -9,12 +9,16 @@ import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 
+import 'hammerjs';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, CoreModule, StarMaterialModule, CharactersModule, RouterModule, HttpClientModule, AppRoutingModule
+    BrowserModule, CoreModule, StarMaterialModule, CharactersModule, RouterModule, HttpClientModule, AppRoutingModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

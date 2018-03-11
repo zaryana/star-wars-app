@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -13,7 +14,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {LayoutModule} from '@angular/cdk/layout';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule, MatSliderModule, MatSnackBarModule} from '@angular/material';
 
 @NgModule({
@@ -21,9 +21,9 @@ import {MatExpansionModule, MatSliderModule, MatSnackBarModule} from '@angular/m
     CommonModule
   ],
   exports: [
-    MatToolbarModule, MatSidenavModule, MatProgressBarModule, MatListModule, MatIconModule, MatMenuModule, MatButtonModule, MatInputModule,
-    MatSelectModule, MatCardModule, MatFormFieldModule, MatSliderModule, MatExpansionModule, MatSnackBarModule, LayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, MatToolbarModule, MatSidenavModule, MatProgressBarModule, MatListModule, MatIconModule, MatMenuModule,
+    MatButtonModule, MatInputModule, MatSelectModule, MatCardModule, MatFormFieldModule, MatSliderModule, MatExpansionModule,
+    MatSnackBarModule, LayoutModule
   ],
   declarations: []
 })

@@ -12,16 +12,19 @@ import {SpeciesPipe} from './shared/species.pipe';
 import {BirthYearPipe} from './shared/birth-year.pipe';
 import {CharacterDetailsComponent} from './character-details/character-details.component';
 import {NotifyService} from './shared/notify.service';
+import { BattleOfYavinPipe } from './shared/battle-of-yavin.pipe';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   imports: [
-    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule, ReactiveFormsModule
+    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule, ReactiveFormsModule, FlexLayoutModule
   ],
   exports: [
     CharacterListComponent, CharacterSearchComponent, CharacterDetailsComponent
   ],
   providers: [CharacterService, NotifyService],
-  declarations: [CharacterListComponent, CharacterSearchComponent, FilmsPipe, SpeciesPipe, BirthYearPipe, CharacterDetailsComponent]
+  declarations: [CharacterListComponent, CharacterSearchComponent, FilmsPipe, SpeciesPipe, BirthYearPipe, CharacterDetailsComponent,
+    BattleOfYavinPipe]
 })
 export class CharactersModule {
 }

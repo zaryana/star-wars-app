@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {CharacterService} from '../shared/character.service';
 import {Character} from '../shared/character.model';
 import {Observable} from 'rxjs/Observable';
@@ -7,6 +7,7 @@ import {Film} from '../shared/film.model';
 import {Species} from '../shared/species.model';
 import {minLessThanMaxValidator} from '../shared/min-less-than-max.validator';
 import {Router} from '@angular/router';
+import {BirthYearPipe} from '../shared/birth-year.pipe';
 
 @Component({
   selector: 'sw-character-list',
@@ -14,6 +15,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit {
+
 
   filterForm: FormGroup;
   characters: Observable<Character[]>;
@@ -24,12 +26,15 @@ export class CharacterListComponent implements OnInit {
   minYear: AbstractControl;
   maxYear: AbstractControl;
 
+  minYearAny = BirthYearPipe.MIN_YEAR_ANY;
+  maxYearAny = BirthYearPipe.MAX_YEAR_ANY;
+
   constructor(private characterService: CharacterService, fb: FormBuilder, private router: Router) {
     this.filterForm = fb.group({
       film: [],
       species: [],
-      minYear: [],
-      maxYear: []
+      minYear: [this.minYearAny],
+      maxYear: [this.maxYearAny]
     }, {
       validator: [minLessThanMaxValidator]
     });

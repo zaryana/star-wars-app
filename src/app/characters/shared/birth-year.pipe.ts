@@ -5,8 +5,13 @@ import {Character} from './character.model';
   name: 'birthYear'
 })
 export class BirthYearPipe implements PipeTransform {
+  static MIN_YEAR_ANY = -1000;
+  static MAX_YEAR_ANY = 100;
 
   transform(people: Character[], min: any, max: any): Character[] {
+    if (min === -1000 && max === 100) {
+      return people;
+    }
     if (!people) {
       return [];
     }
