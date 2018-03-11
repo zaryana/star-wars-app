@@ -28,7 +28,7 @@ describe('Character Service', () => {
     const swApiPageMock = SWAPI_1PAGE_MOCK;
     characterService.getCharacters().subscribe(charactersList => expect(charactersList).toEqual(swApiPageMock.results));
 
-    const characterRequest = httpMock.expectOne('https://swapi.co/api/people');
+    const characterRequest = httpMock.expectOne('https://swapi.co/api/people/');
 
     characterRequest.flush(swApiPageMock);
   }));
@@ -41,7 +41,7 @@ describe('Character Service', () => {
 
     characterService.getCharacters().subscribe(charactersList => expect(charactersList).toEqual(expectedCharacters));
 
-    let characterRequest = httpMock.expectOne('https://swapi.co/api/people');
+    let characterRequest = httpMock.expectOne('https://swapi.co/api/people/');
     characterRequest.flush(swApiPageMock1);
 
     characterRequest = httpMock.expectOne(swApiPageMock1.next);

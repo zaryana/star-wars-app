@@ -10,6 +10,7 @@ import {FilmsPipe} from '../shared/films.pipe';
 import {SpeciesPipe} from '../shared/species.pipe';
 import {NotifyService} from '../shared/notify.service';
 import {RouterTestingModule} from '@angular/router/testing';
+import {BattleOfYavinPipe} from '../shared/battle-of-yavin.pipe';
 
 describe('CharacterListComponent', () => {
   let component: CharacterListComponent;
@@ -18,7 +19,7 @@ describe('CharacterListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [StarMaterialModule, HttpClientModule, RouterTestingModule, ReactiveFormsModule],
-      declarations: [ CharacterListComponent, BirthYearPipe, FilmsPipe, SpeciesPipe ],
+      declarations: [ CharacterListComponent, BirthYearPipe, FilmsPipe, SpeciesPipe, BattleOfYavinPipe ],
       providers: [ CharacterService, NotifyService ]
     })
     .compileComponents();
