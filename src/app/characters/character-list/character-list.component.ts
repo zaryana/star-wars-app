@@ -1,13 +1,8 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CharacterService} from '../shared/character.service';
 import {Character} from '../shared/character.model';
 import {Observable} from 'rxjs/Observable';
-import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
-import {Film} from '../shared/film.model';
-import {Species} from '../shared/species.model';
-import {minLessThanMaxValidator} from '../shared/min-less-than-max.validator';
 import {Router} from '@angular/router';
-import {BirthYearPipe} from '../shared/birth-year.pipe';
 
 @Component({
   selector: 'sw-character-list',
@@ -16,38 +11,18 @@ import {BirthYearPipe} from '../shared/birth-year.pipe';
 })
 export class CharacterListComponent implements OnInit {
 
-
-  filterForm: FormGroup;
+  filter = new CharacterFilter();
   characters: Observable<Character[]>;
-  films: Observable<Film[]>;
-  allSpecies: Observable<Species[]>;
-  film: AbstractControl;
-  species: AbstractControl;
-  minYear: AbstractControl;
-  maxYear: AbstractControl;
 
-  minYearAny = BirthYearPipe.MIN_YEAR_ANY;
-  maxYearAny = BirthYearPipe.MAX_YEAR_ANY;
-
-  constructor(private characterService: CharacterService, fb: FormBuilder, private router: Router) {
-    this.filterForm = fb.group({
-      film: [],
-      species: [],
-      minYear: [this.minYearAny],
-      maxYear: [this.maxYearAny]
-    }, {
-      validator: [minLessThanMaxValidator]
-    });
-    this.film = this.filterForm.get('film');
-    this.species = this.filterForm.get('species');
-    this.minYear = this.filterForm.get('minYear');
-    this.maxYear = this.filterForm.get('maxYear');
+  constructor(private characterService: CharacterService, private router: Router) {
   }
 
   ngOnInit() {
     this.characters = this.characterService.getCharacters();
-    this.films = this.characterService.getFilms();
-    this.allSpecies = this.characterService.getSpecies();
+  }
+
+  setFilter(newFilter: CharacterFilter) {
+    this.filter = newFilter;
   }
 
   public goTo(character: Character) {
@@ -55,4 +30,11 @@ export class CharacterListComponent implements OnInit {
     const id = url[url.length - 2];
     this.router.navigate(['/characters', id]);
   }
+}
+
+export class CharacterFilter {
+  films: string;
+  species: string;
+  minYear: number;
+  maxYear: number;
 }

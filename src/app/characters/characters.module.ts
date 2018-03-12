@@ -18,8 +18,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
-    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule, ReactiveFormsModule, FlexLayoutModule,
-    BrowserAnimationsModule
+    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule, ReactiveFormsModule,
+    BrowserAnimationsModule, FlexLayoutModule
   ],
   exports: [
     CharacterListComponent, CharacterSearchComponent, CharacterDetailsComponent

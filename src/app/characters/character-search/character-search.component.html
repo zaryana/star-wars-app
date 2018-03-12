@@ -1,1 +1,78 @@
+<mat-card class="sw-card">
+  <mat-card-title>Characters</mat-card-title>
+  <form [formGroup]="filterForm">
 
+    <mat-card-content>
+
+      <div class="containerX">
+
+        <div class="container" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="3%">
+          <mat-form-field class="sw-filter-field" floatLabel="never" fxFlex>
+            <mat-select placeholder="Films" [formControl]="film" multiple>
+              <mat-option *ngFor="let f of films | async" [value]="f">{{f.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="sw-filter-field" floatLabel="never" fxFlex>
+            <mat-select placeholder="Species" [formControl]="species" multiple>
+              <mat-option *ngFor="let s of allSpecies | async" [value]="s">{{s.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="container" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="3%">
+          <div fxFlex="50%" fxLayout="column">
+            <div fxLayout="row" class="sw-filter-field">
+              <div fxLayout="column" fxFlex="50%">
+                <mat-label class="mat-hint">Birth from</mat-label>
+              </div>
+              <div fxLayout="column" fxFlex="50%">
+                <div fxLayout="row">
+                  <mat-label class="mat-hint" *ngIf="minYear.value != minYearAny">{{minYear.value | battleOfYavin}}</mat-label>
+                  <mat-label class="mat-hint" *ngIf="minYear.value == minYearAny">any</mat-label>
+                </div>
+              </div>
+            </div>
+            <mat-slider class="sw-slider"
+                        max="100"
+                        min="-1000"
+                        step="1"
+                        [thumb-label]="true"
+                        [formControl]="minYear">
+            </mat-slider>
+          </div>
+
+          <div fxFlex="50%" fxLayout="column">
+            <div fxLayout="row" class="sw-filter-field">
+              <div fxLayout="column" fxFlex="50%">
+                <mat-label class="mat-hint">Birth to</mat-label>
+              </div>
+              <div fxLayout="column" fxFlex="50%">
+                <div fxLayout="row">
+                  <mat-label class="mat-hint" *ngIf="maxYear.value !=maxYearAny">{{maxYear.value | battleOfYavin}}
+                  </mat-label>
+                  <mat-label class="mat-hint" *ngIf="maxYear.value == maxYearAny">any</mat-label>
+                </div>
+              </div>
+            </div>
+            <mat-slider max="100"
+                        min="-1000"
+                        step="1"
+                        [thumb-label]="true"
+                        [formControl]="maxYear">
+            </mat-slider>
+          </div>
+        </div>
+
+        <div class="container" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="3%">
+          <mat-error class="sw-filter-field" *ngIf="filterForm.errors?.minLessThanMax">
+            Birth to should be larger than Birth from
+          </mat-error>
+        </div>
+      </div>
+
+    </mat-card-content>
+
+
+  </form>
+
+</mat-card>
