@@ -1,20 +1,21 @@
 <div class="sw-container" [class.sw-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="sw-toolbar">
-      <a mat-icon-button [routerLink]="['']">
-        <mat-icon>home</mat-icon>
-      </a>
-      Star Wars Browser
+    <a mat-icon-button [routerLink]="['']">
+      <mat-icon>home</mat-icon>
+    </a>
+    Star Wars Browser
 
-      <span class="sw-toolbar-spacer"></span>
-      <a mat-icon-button href="http://rocketloop.de/">
-        <mat-icon>all_inclusive</mat-icon>
-      </a>
+    <span class="sw-toolbar-spacer"></span>
+    <a mat-icon-button href="http://rocketloop.de/">
+      <mat-icon>all_inclusive</mat-icon>
+    </a>
   </mat-toolbar>
 
-  <mat-sidenav-container class="sw-sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav-container class="sw-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <main [@smooth]="getState(o)">
+        <router-outlet #o="outlet"></router-outlet>
+      </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

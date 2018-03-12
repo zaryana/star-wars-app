@@ -11,14 +11,15 @@ import {AppRoutingModule} from './app-routing.module';
 
 import 'hammerjs';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, CoreModule, StarMaterialModule, CharactersModule, RouterModule, HttpClientModule, AppRoutingModule,
-    FlexLayoutModule
+    BrowserModule, BrowserAnimationsModule, CoreModule, StarMaterialModule, CharactersModule, RouterModule, HttpClientModule,
+    AppRoutingModule, FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,10 +14,12 @@ import {CharacterDetailsComponent} from './character-details/character-details.c
 import {NotifyService} from './shared/notify.service';
 import { BattleOfYavinPipe } from './shared/battle-of-yavin.pipe';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
-    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule, ReactiveFormsModule, FlexLayoutModule
+    CommonModule, CharactersRoutingModule, StarMaterialModule, HttpClientModule, ReactiveFormsModule, FlexLayoutModule,
+    BrowserAnimationsModule
   ],
   exports: [
     CharacterListComponent, CharacterSearchComponent, CharacterDetailsComponent

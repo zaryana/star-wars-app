@@ -5,8 +5,8 @@ import {CharacterListComponent} from './character-list/character-list.component'
 import {CharacterDetailsComponent} from './character-details/character-details.component';
 
 const routes: Routes = [
-  {path: '', component: CharacterListComponent},
-  {path: 'characters/:id', component: CharacterDetailsComponent},
+  {path: '', component: CharacterListComponent,  data: { state: 'home' }},
+  {path: 'characters/:id', component: CharacterDetailsComponent, data: { state: 'details' }},
   {path: '**', redirectTo: ''}
 ];
 
