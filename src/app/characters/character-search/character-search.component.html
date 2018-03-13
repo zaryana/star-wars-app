@@ -26,7 +26,7 @@
                 <mat-label class="mat-hint">Birth from</mat-label>
               </div>
               <div fxLayout="column" fxFlex="50%">
-                <div fxLayout="row">
+                <div fxLayout="row" fxFlexAlign="end">
                   <mat-label class="mat-hint" *ngIf="minYear.value != minYearAny">{{minYear.value | battleOfYavin}}</mat-label>
                   <mat-label class="mat-hint" *ngIf="minYear.value == minYearAny">any</mat-label>
                 </div>
@@ -47,7 +47,7 @@
                 <mat-label class="mat-hint">Birth to</mat-label>
               </div>
               <div fxLayout="column" fxFlex="50%">
-                <div fxLayout="row">
+                <div fxLayout="row" fxFlexAlign="end">
                   <mat-label class="mat-hint" *ngIf="maxYear.value !=maxYearAny">{{maxYear.value | battleOfYavin}}
                   </mat-label>
                   <mat-label class="mat-hint" *ngIf="maxYear.value == maxYearAny">any</mat-label>
